@@ -34,7 +34,7 @@ Once you have a [DataSetIterator](http://deeplearning4j.org/doc/org/deeplearning
 
 ### Normalizing Data
 
-Neural networks work best when the data they're fed is normalized, constrained to a range between -1 and 1. There are several reasons for that. One is that nets are trained using [gradient descent](https://en.wikipedia.org/wiki/Gradient_descent), and their activation functions usually having an active range somewhere between -1 and 1. Even when using an activation function that doesn't saturate quickly, it is still good practice to constrain your values to this range to improve performance.
+Neural networks work best when the data they're fed is normalized, constrained to a range between -1 and 1. There are several reasons for that. One is that nets are trained using [gradient descent](https://en.wikipedia.org/wiki/Gradient_descent), and their activation functions usually have an active range somewhere between -1 and 1. Even when using an activation function that doesn't saturate quickly, it is still good practice to constrain your values to this range to improve performance.
 
 Normalizing data is pretty easy in DL4J. Decide how you want to normalize your data, and set the corresponding [DataNormalization](http://nd4j.org/doc/org/nd4j/linalg/dataset/api/preprocessor/DataNormalization.html) up as a preprocessor for your DataSetIterator. Currently you can choose from [ImagePreProcessingScaler](http://nd4j.org/doc/org/nd4j/linalg/dataset/api/preprocessor/ImagePreProcessingScaler.html), [NormalizerMinMaxScaler](http://nd4j.org/doc/org/nd4j/linalg/dataset/api/preprocessor/NormalizerMinMaxScaler.html) and [NormalizerStandardize](http://nd4j.org/doc/org/nd4j/linalg/dataset/api/preprocessor/NormalizerStandardize.html). 
 
@@ -85,7 +85,7 @@ that you have seen in the example above, there are several [other layer types](h
 
 ## Training a Model
 
-After configuring your neural, you will have to train the model. The simplest case is to simply call the `.fit()` method on the model configuration with your `DataSetIterator` as an argument. This will train the model on all of your data
+After configuring your neural network, you will have to train the model. The simplest case is to simply call the `.fit()` method on the model configuration with your `DataSetIterator` as an argument. This will train the model on all of your data
 once. A single pass over the entire dataset is called an *epoch*. DL4J has several different methods for passing through the data more than just once.
 
 The simplest way, is to reset your `DataSetIterator` and loop over the fit call as many times as you want. This way you can train your model for as many epochs as you think is a good fit.
@@ -109,10 +109,10 @@ class is used for evaluation. Slightly different methods apply to evaluating a n
 
 Building neural networks to solve problems is an empirical process. That is, it requires trial and error. So you will have to try different settings and architectures in order to find a neural net configuration that performs well.
 
-DL4J provides a listener facility help you monitor your network's performance visually. You can set up listeners for your model that will be called after each mini-batch is processed. The two most often used listeners that DL4J ships out of the box are [ScoreIterationListener](http://deeplearning4j.org/doc/org/deeplearning4j/optimize/listeners/ScoreIterationListener.html)
+DL4J provides a listener facility to help you monitor your network's performance visually. You can set up listeners for your model that will be called after each mini-batch is processed. The two most often used listeners that DL4J ships out of the box are [ScoreIterationListener](http://deeplearning4j.org/doc/org/deeplearning4j/optimize/listeners/ScoreIterationListener.html)
 and [HistogramIterationListener](http://deeplearning4j.org/doc/org/deeplearning4j/ui/weights/HistogramIterationListener.html). 
 
-While `ScoreIterationListener` will simply print the current error score for your network, `HistogramIterationListener` will start up a web UI that to provide you with a host of different information that you can use to fine tune your network configuration. See [Visualize, Monitor and Debug Network Learning](http://deeplearning4j.org/visualization) on how to interpret that data.
+While `ScoreIterationListener` will simply print the current error score for your network, `HistogramIterationListener` will start up a web UI to provide you with a host of different information that you can use to fine tune your network configuration. See [Visualize, Monitor and Debug Network Learning](http://deeplearning4j.org/visualization) on how to interpret that data.
 
 See [Troubleshooting neural nets](http://deeplearning4j.org/troubleshootingneuralnets) for more information on how to improve results.
 
